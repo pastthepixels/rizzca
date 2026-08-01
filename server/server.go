@@ -299,6 +299,9 @@ func (h RequestHandler) renderView(res http.ResponseWriter, viewName string, dat
 		if errors.Is(err, syscall.EPIPE) {
 			fmt.Println("recovering from broken pipe")
 			return
+		} else if errors.Is(err, syscall.ECONNRESET) {
+			fmt.Println("recovering from connection reset by peer")
+			return
 		} else {
 			eout.Check(err, "rendering %q view", view)
 		}
