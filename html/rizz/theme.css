@@ -25,6 +25,17 @@ body {
   max-width: 800px;
 }
 
+/* Rows */
+div.row {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+div.row > * {
+  flex-grow: 1;
+}
+
 /* Links in the main page to threads */
 .thread-link {
   border: var(--border-thin);
@@ -59,17 +70,22 @@ ul[type="menu"] {
   margin-bottom: 8px;
 }
 
-/* Button to create a new thread */
-button {
+/* Label */
+label[for] {
+  font-style: italic;
+  font-size: 10pt;
+  color: var(--color-dark-2);
+  margin-bottom: 4pt;
+}
+
+/* Buttons */
+button, input[type=submit] {
   padding: 4px 16px;
   border-radius: 24pt;
   background-color: unset;
   border: 2px solid currentColor;
   color: var(--color-accent-dark);
   font-family: inherit;
-}
-
-button, input[type=submit] {
   cursor: pointer;
   transition: 0.1s ease border-bottom-width;
 }
