@@ -1,0 +1,201 @@
+@media(max-width: 500px) {
+  body {
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+    width: calc(100% - 20px) !important;
+  }
+}
+
+/* Header */
+header {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  max-width: 100%;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 1000;
+}
+
+h1 > img {
+  height: 1em;
+  vertical-align: center;
+  margin-right: 20px;
+}
+
+/* Paragraphs */
+p {
+  line-height: 1.5em;
+  font-weight: 200;
+  margin-bottom: 32px;
+  margin-top: 32px;
+}
+
+/* Actions blocks */
+fieldset {
+  border: var(--border-thin);
+  background: color-mix(in hsl, var(--color-light-1) 33%, transparent);
+}
+
+fieldset * {
+  transition: all 0.1s ease;
+}
+
+fieldset > legend {
+  font-weight: thin;
+  color: var(--color-dark-1);
+  font-size: 20px;
+  padding: 0px 10px;
+}
+
+fieldset div.content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 20px;
+}
+
+fieldset a, fieldset > p {
+  display: inline;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  min-height: 20px;
+  padding: 0;
+}
+
+/* Links */
+a:link,
+a:link button {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:link, a:visited {
+  color: var(--color-accent-dark);
+}
+
+article a:link:not(article > section a):after, div.thread-link a:after {
+  content: " (link)";
+  font-size: 10px;
+}
+
+a:link:hover,
+a:link button:hover,
+section button:hover {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-thickness: 8%;
+}
+
+/* Details/summary blocks */
+
+summary {
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration-style: wavy;
+}
+
+summary:hover {
+  text-decoration: underline;
+}
+
+details {
+  display: flex;
+  flex-direction: column;
+  flex-gap: 15px;
+}
+
+details p {
+  height: auto;
+}
+
+details[open] {
+  border-left: var(--border-thin);
+  padding-left: 24px;
+}
+
+details > *:not(summary) {
+  margin-left: 15px;
+  margin-top: 15px;
+}
+
+fieldset details a[href] {
+  color: var(--color-accent) !important;
+}
+
+/* Code blocks */
+code:not(pre code) {
+  background: var(--color-dark-1);
+  color: var(--color-light-2);
+  border-radius: 6px;
+  padding: 0px 5px;
+}
+
+pre {
+  border: var(--border-inset);
+  background: var(--color-dark-1);
+  color: var(--color-light-2);
+  padding: 15px;
+  overflow: auto;
+}
+
+pre code a:link:after {
+  content: "#" !important;
+  margin-right: 5px;
+}
+
+/* Blockquotes */
+blockquote {
+  border: var(--border-thin-quote);
+  background: color-mix(var(--color-accent-dark) 20%, transparent);
+  padding: 5px 15px;
+  font-weight: 600;
+  position: relative;
+}
+
+blockquote:before {
+  content: "blockquote";
+  position: absolute;
+  left: -2px;
+  top: -18px;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+blockquote[type=info]:before {
+  content: "info";
+}
+
+/* Input forms */
+input:focus-visible {
+  outline: 2px solid var(--color-light-1);
+  box-shadow: 0 0 0 4px var(--color-dark-1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: start;
+}
+
+form fieldset > label:before {
+  content: "⬐ ";
+}
+
+form fieldset > input {
+  margin-bottom: 15px;
+}
+
+form fieldset > input[type=text] {
+  align-self: stretch;
+}

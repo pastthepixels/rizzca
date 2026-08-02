@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"html/template"
+	"io"
 	"log"
 	"net"
 	"net/http"
@@ -15,11 +16,11 @@ import (
 	"strings"
 	"syscall"
 	"time"
-	"io"
 
 	"gomod.cblgh.org/cerca/crypto"
 	"gomod.cblgh.org/cerca/database"
 	"gomod.cblgh.org/cerca/defaults"
+	"gomod.cblgh.org/cerca/html"
 	cercaHTML "gomod.cblgh.org/cerca/html"
 	"gomod.cblgh.org/cerca/i18n"
 	"gomod.cblgh.org/cerca/limiter"
@@ -28,8 +29,9 @@ import (
 	"gomod.cblgh.org/cerca/util"
 	"gomod.cblgh.org/cerca/util/eout"
 
-	qrcode "github.com/skip2/go-qrcode"
 	"encoding/base64"
+
+	qrcode "github.com/skip2/go-qrcode"
 
 	"github.com/cblgh/plain/rss"
 )
@@ -188,8 +190,8 @@ func generateTemplates(config types.Config, files map[string][]byte, translator 
 		"dumpLogo": func() template.HTML {
 			return template.HTML(files["logo"])
 		},
-		"inc": func (n int) int {
-			return n+1
+		"inc": func(n int) int {
+			return n + 1
 		},
 		// takes a string and returns a base64 PNG of a QR code representing the input
 		"generateQR": func(input string) string {
@@ -479,6 +481,16 @@ func (h RequestHandler) IndexRoute(res http.ResponseWriter, req *http.Request) {
 
 	view := TemplateData{Data: IndexData{Threads: threads, Categories: categories, VisibleCategoriesMap: categoriesMap}, SortByPosts: mostRecentPost, IsAdmin: isAdmin, HasRSS: h.config.RSS.URL != "", LoggedIn: loggedIn, Title: h.translator.Translate("Threads")}
 	h.renderView(res, "index", view)
+}
+
+func (h RequestHandler) RizzRoute(res http.ResponseWriter, req *http.Request) {
+	print("waf")
+	title := h.translator.Translate("ErrGeneric404")
+	data := GenericMessageData{
+		Title:   title,
+		Message: "waf",
+	}
+	h.renderGenericMessage(res, req, data)
 }
 
 func IndexRedirect(res http.ResponseWriter, req *http.Request) {
@@ -1080,6 +1092,8 @@ func NewServer(authKey string, dir string, config types.Config) (*CercaForum, er
 	s.ServeMux.HandleFunc("/", handler.IndexRoute)
 	s.ServeMux.HandleFunc("/rss/", handler.RSSRoute)
 	s.ServeMux.HandleFunc("/rss.xml", handler.RSSRoute)
+	// themes!!
+	s.ServeMux.Handle("/rizz/", http.FileServer(http.FS(html.RizzCSS)))
 
 	fileserver := http.FileServer(http.Dir(assetsPath))
 	s.ServeMux.Handle("/assets/", http.StripPrefix("/assets/", fileserver))

@@ -1,0 +1,45 @@
+:root {
+    /* Borders */
+	--border-outset: 2px solid var(--color-dark-1);
+	--border-outset-subtle: 2px solid var(--color-dark-3);
+	--border-thin: 2px solid var(--color-dark-1);
+	--border-thin-quote: 2px dotted var(--color-accent-dark);
+
+	/* Effects */
+	--transition-duration: 0.1s;
+	
+	/* Shadows */
+	--section-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  --nav-shadow: 0 12px 24px var(--color-dark-2) inset,
+                  0 8px 16px rgba(0, 0, 0, 0.1);
+
+    /* Colors */
+	--color-dark-1: #242931;
+    --color-dark-2: #343b48;
+    --color-dark-3: #a2abbd;
+    --color-light-1: #f0f1f2;
+	--color-light-2: #d6e1f5;
+    --color-light-3: #d6e1f5;
+    --color-accent-dark: #4965a1;
+    --color-accent-light: #b3d3e5;
+    --color-destructive-fg: #ed6459;
+}
+
+@media(prefers-color-scheme: dark) {
+  :root {
+    --color-dark-1: #f0f1f2;
+    --color-dark-2: #d6e1f5;
+    --color-dark-3: #606978;
+    --color-light-1: #242931;
+    --color-light-2: #343b48;
+    --color-light-3: #767c8b;
+    --color-accent-dark: #b3d3e5;
+    --color-accent-light: #4965a1;
+  }
+
+  /* For any elements that should retain a light background, even when in dark mode -- e.x. the <section> that stores the header image in potatoe.ca */
+  .light-bg {
+    background: var(--color-dark-1);
+  }
+}
+

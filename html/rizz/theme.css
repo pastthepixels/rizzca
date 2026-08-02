@@ -1,0 +1,102 @@
+@import url("vars.css");
+@import url("potatoe.css");
+@import url("thread.css");
+
+html {
+  font-family: monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100%;
+  background-color: var(--color-light-1);
+  background-size: 25vw auto;
+  color: var(--color-dark-1);
+  font-size: 16px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 80%;
+  max-width: 800px;
+}
+
+/* Links in the main page to threads */
+.thread-link {
+  border: var(--border-thin);
+  border-color: var(--color-dark-3);
+  border-bottom-right-radius: 8vw;
+  padding: 16px;
+  transition: all var(--transition-duration) ease;
+}
+
+.thread-link:hover {
+  background-color: var(--color-dark-2);
+  border-color: vaR(--color-dark-2)
+}
+
+.thread-link:hover * {
+  color: var(--color-light-1);
+}
+
+.thread-link h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.thread-link i {
+  color: var(--color-dark-3);
+  background: unset;
+}
+
+/* Menus */
+ul[type="menu"] {
+  gap: 24px;
+  margin-bottom: 8px;
+}
+
+/* Button to create a new thread */
+button {
+  padding: 4px 16px;
+  border-radius: 24pt;
+  background-color: unset;
+  border: 2px solid currentColor;
+  color: var(--color-accent-dark);
+  font-family: inherit;
+}
+
+button, input[type=submit] {
+  cursor: pointer;
+  transition: 0.1s ease border-bottom-width;
+}
+
+button:hover:not(button:active), input:hover {
+  background: var(--color-dark-1);
+  color: var(--color-light-1);
+}
+
+/* Post text field */
+div.post-container {
+  border: var(--border-outset-subtle);
+  background: var(--color-light-1);
+  padding: 16pt;
+  width: 100%;
+  max-width: unset;
+  border-radius: 24pt;
+}
+
+div.post-container textarea {  
+  resize: vertical;
+  background: var(--color-light-1);
+  color: var(--color-dark-1);
+  border: unset;
+  outline: unset;
+}
+div.post-container:has(textarea:focus) {
+  border-color: var(--color-accent-dark);
+  outline: 3px solid var(--color-accent-dark);
+}

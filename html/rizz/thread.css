@@ -1,0 +1,117 @@
+/* CSS for /thread; e.g. what you see when you view a thread */
+
+article {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 0;
+  /* Styling! */
+  box-shadow: var(--section-shadow);
+  border: var(--border-outset-subtle);
+  background-color: var(--color-light-1);
+  color: var(--color-dark-1);
+}
+
+article:has(section) {
+  padding-top: 0;
+}
+
+
+article > * {
+  margin: 0 32px;
+}
+
+article:nth-child(2) {
+  background-color: var(--color-light-2);
+}
+
+article:before {
+  content: "";
+  position: absolute;
+  bottom: -64px;
+  height: 64px;
+  left: 10%;
+  width: 2px;
+  border-left: var(--border-outset-subtle);
+  z-index: -1;
+}
+
+article:last-child:before {
+  border-image: 
+    linear-gradient(
+      to bottom, 
+      var(--color-dark-3),
+      color-mix(var(--color-dark-3), transparent 50%) 40%,
+      transparent 80%
+    ) 1 100%;
+}
+
+/* Navigation bar */
+article > section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: var(--border-outset-subtle);
+  margin: 0;
+  padding: 0;
+}
+
+article > section > * {
+  background: color-mix(currentColor, transparent 90%);
+  flex: 1 1 0;
+  color: var(--color-dark-1);
+  margin: 0 !important;
+  border-right: 1px solid color-mix(currentColor, transparent 90%);
+  text-align: center;
+  transition: background var(--transition-duration) ease;
+}
+
+
+article > section > *:hover {
+  background: color-mix(currentColor, transparent 80%);
+}
+
+article > section > *:last-child {
+  border-right: unset;
+}
+
+section a {
+  color: var(--color-accent-dark) !important;
+  
+}
+
+section > a:link:after {
+  content: "" !important;
+}
+
+span.delete {
+  color: var(--color-destructive-fg);
+}
+
+span.delete button {
+  padding: 0;
+  border: unset;
+  background: unset;
+  color: inherit !important;
+}
+
+span.delete button {
+  background: unset !important;
+  color: inherit !important;
+}
+
+span.edited-marker {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: var(--color-light-1);
+  width: 24pt;
+  height: 24pt;
+  text-align: center;
+  align-content: center;
+  border-top-left-radius: 8pt;
+  border: var(--border-outset-subtle);
+  border-right: unset;
+  border-bottom: unset;
+}
