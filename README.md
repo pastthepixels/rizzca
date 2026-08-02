@@ -1,8 +1,17 @@
-#  Cerca 
+#  ~~Cer~~Rizzca 
 
 <img src='./defaults/logo.png' width='96px' height='96px'/>
 
-_lean forum software_
+An opinionated fork of Cerca, with a default theme that's discernible and visually accessible. Aka with rizz. Whatever that means.
+
+Building is the same as usual; the bundled theme is served with the built in HTML so you don't have to do anything to your existing Cerca setups. It's recommended that you edit it through CSS variable overrides (see `html/rizz/vars.css`). CSS is based off [my own website's](https://potatoe.ca) with a lot of tweaks.
+
+<img width="1785" height="1083" alt="image" src="https://github.com/user-attachments/assets/a2e088e2-ffdc-4175-8d6b-324dae8af052" />
+
+ 
+*The rest of the original README follows:*
+
+-----
 
 Meaning:
 
