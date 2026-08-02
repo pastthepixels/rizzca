@@ -69,6 +69,9 @@ article > section > * {
   align-content: center;
 }
 
+article > section > *:last-child {
+  border-right: unset;
+}
 
 article > section > *:has(a[href]) {
   color: var(--color-accent-dark);
