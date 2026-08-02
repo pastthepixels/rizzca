@@ -109,7 +109,7 @@ var English = map[string]string{
 	"Content":             "Content",
 	"Private":             "Private",
 	"Create":              "Create",
-	"TextareaPlaceholder": "Tabula rasa",
+	"TextareaPlaceholder": "What's on your mind?",
 
 	"PasswordReset":                   "reset password",
 	"PasswordResetSuccess":            "Reset password—success!",
@@ -149,6 +149,8 @@ var English = map[string]string{
 	"Author":                "Author",
 	"Responded":             "responded",
 	"YourAnswer":            "Your answer",
+
+	"PostedBy":              "Posted by",
 
 	"AriaHome":       "Home",
 	"ThreadStartNew": "Start a new thread",

@@ -10,10 +10,10 @@
     <article id="{{ $post.ID }}">
         <section aria-label='{{ "AriaPostMeta" | translate }}'>
             {{ if eq $post.AuthorID $userID }} 
-            <span style="float: right;" aria-label='{{ "AriaDeletePost" | translate }}'>
+            <span class="delete" aria-label='{{ "AriaDeletePost" | translate }}'>
                     <form style="display: inline-block;" method="POST" action="/post/delete/{{ $post.ID }}"
                         onsubmit="return confirm('{{"PromptDeleteQuestion" | translate }}');">
-                        <button style="color: darkred; text-decoration: underline; background-color: transparent; border: 0; padding: 0;" type="submit"> {{ "Delete" | translate }}</button>
+                        <button type="submit"> {{ "Delete" | translate }}</button>
                         <input type="hidden" name="thread" value="{{ $threadURL }}">
                     </form>
                 </span>
@@ -28,10 +28,10 @@
                 <span class="visually-hidden"> {{ "Responded" | translate }}:</span>
             </span>
             <a href="#{{ $post.ID }}">
-                <span style="margin-left: 0.5rem;">
+                <span>
                     <time title="{{ $post.Publish | formatDateTime }}" datetime="{{ $post.Publish | formatDate }}">{{ $post.Publish | formatDateRelative }}</time></span></a>
                  {{ if $post.LastEdit.Valid }}
-                 <span style="cursor: pointer;">
+                 <span style="cursor: pointer;" class="edited-marker">
                      <time title="{{ "EditedAt" | translate }} {{ $post.LastEdit.Time | formatDateTime }}" datetime="{{ $post.LastEdit.Time | formatDate }}">*</time>
                 </span>
                 {{ end }}

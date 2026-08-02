@@ -1,39 +1,49 @@
 {{ template "head" . }}
 <main>
-    {{ if len .Data.Threads | eq 0 }} 
-    <p> {{ "ThreadsViewEmpty" | translate }} </p>
-    {{ else if len .Data.Categories | lt 1 }}
-    <details>
-        <summary> filter threads (showing {{ len .Data.VisibleCategoriesMap }} of {{ len .Data.Categories
-        }} categories)</summary>
-        <form id="reset-categories" type="GET" action="/"></form>
-        <form id="filter-form" type="GET" action="/" style="display: grid; grid-template-columns: repeat(2, max-content); grid-column-gap: 0.5rem;">
-            {{ $categoryMap := index .Data.VisibleCategoriesMap }}
-            {{ range $index, $category := .Data.Categories}}
-                {{ $showCategory := index $categoryMap $category }}
-                <span>
-                    <input type="hidden" form="reset-categories" value="{{ $category }}" name="show"/>
-                    <input type="checkbox" id="filter-{{$category}}" {{ if $showCategory }} checked {{ end }} value="{{ $category }}" name="show"/>
-                    <label style="display: inline-block;" for="filter-{{$category}}">{{ $category }}</label>
-                </span>
-            {{ end }}
-        </form>
-        <button form="reset-categories" type="submit">show all</button>
-        <button form="filter-form" type="submit">filter</button>
-    </details>
-    {{ end }}
-    {{ range $index, $thread := .Data.Threads }}
-        {{ if $thread.Show }}
-        <h2>
-          <a href="{{$thread.Slug}}">{{ $thread.Title }}</a>
-        {{ if $thread.Private }} <span title='{{ "Private" | translate }}'>⚿</span> {{ end }}
-        </h2>
-        {{ end }}
-    {{ end }}
+	{{ if len .Data.Threads | eq 0 }}
+	<p>
+		{{ "ThreadsViewEmpty" | translate }}
+	</p>
+	{{ else if len .Data.Categories | lt 1 }}
+	<details>
+		<summary>
+			filter threads (showing {{ len .Data.VisibleCategoriesMap }} of {{ len .Data.Categories
+			}} categories)
+		</summary>
+		<form id="reset-categories" type="GET" action="/"></form>
+		<form id="filter-form" type="GET" action="/" style="display: grid; grid-template-columns: repeat(2, max-content); grid-column-gap: 0.5rem;">
+			{{ $categoryMap := index .Data.VisibleCategoriesMap }}
+			{{ range $index, $category := .Data.Categories}}
+			{{ $showCategory := index $categoryMap $category }}
+			<span>
+				<input type="hidden" form="reset-categories" value="{{ $category }}" name="show">
+				<input type="checkbox" id="filter-{{$category}}" {{ if $showCategory }} checked {{ end }} value="{{ $category }}" name="show">
+				<label style="display: inline-block;" for="filter-{{$category}}">{{ $category }}</label>
+			</span>
+			{{ end }}
+		</form>
+		<button form="reset-categories" type="submit">show all</button>
+		<button form="filter-form" type="submit">filter</button>
+	</details>
+	{{ end }}
+	<div>
+		<a href="/thread/new" class="no-indicator">
+			<button class="thread-new">
+				+ {{ "ThreadStartNew" | translate }}
+			</button>
+		</a>
+	</div>
+	{{ range $index, $thread := .Data.Threads }}
+	{{ if $thread.Show }}
+	<div class="thread-link">
+		<h1><a href="{{$thread.Slug}}">{{ $thread.Title }}</a></h1>
+		<i>{{ "PostedBy" | translate }} {{$thread.Author}} @ {{$thread.Publish | formatDate}}</i>
+		{{ if $thread.Private }} <span title='{{ "Private" | translate }}'>⚿</span>
+		{{ end }}
+	</div>
+	{{ end }}
+	{{ end }}
 </main>
 {{ if .LoggedIn }}
-<aside>
-    <p> <a href="/thread/new">{{ "ThreadStartNew" | translate }}</a></p>
-</aside>
 {{ end }}
 {{ template "footer" . }}
