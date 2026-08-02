@@ -11,16 +11,16 @@
         <section aria-label='{{ "AriaPostMeta" | translate }}'>
             {{ if eq $post.AuthorID $userID }} 
             <span class="delete" aria-label='{{ "AriaDeletePost" | translate }}'>
-                    <form style="display: inline-block;" method="POST" action="/post/delete/{{ $post.ID }}"
+                    <form method="POST" action="/post/delete/{{ $post.ID }}"
                         onsubmit="return confirm('{{"PromptDeleteQuestion" | translate }}');">
                         <button type="submit"> {{ "Delete" | translate }}</button>
                         <input type="hidden" name="thread" value="{{ $threadURL }}">
                     </form>
                 </span>
             {{ if eq $index 0 }}
-                <span style="float: right; margin-right:0.5rem"><a href="/post/edit/{{ $post.ID }}?op=1">edit thread</a></span>
+                <a href="/post/edit/{{ $post.ID }}?op=1">edit thread</a>
             {{ else }}
-                <span style="float: right; margin-right:0.5rem"><a href="/post/edit/{{ $post.ID }}">edit</a></span>
+                <a href="/post/edit/{{ $post.ID }}">edit</a>
             {{ end }}
             {{ end }}
             <span class="visually-hidden">{{ "Author" | translate }}:</span>

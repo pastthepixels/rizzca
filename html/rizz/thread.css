@@ -49,6 +49,7 @@ article:last-child:before {
 
 /* Navigation bar */
 article > section {
+  font-family: monospace;
   display: flex;
   flex-direction: row;
   align-items: fill;
@@ -58,18 +59,25 @@ article > section {
 }
 
 article > section > * {
-  background: color-mix(currentColor, transparent 90%);
+  background: color-mix(currentColor, transparent 95%);
   flex: 1 1 0;
   color: var(--color-dark-1);
   margin: 0 !important;
-  border-right: 1px solid color-mix(currentColor, transparent 90%);
+  border-right: 1px solid color-mix(currentColor, transparent 80%);
   text-align: center;
   transition: background var(--transition-duration) ease;
   align-content: center;
 }
 
 
-article > section > *:hover {
+article > section > *:has(a[href]) {
+  color: var(--color-accent-dark);
+}
+
+
+article > section > *:has(a[href]):hover,
+article > section > a[href]:hover,
+article > section > *:has(button):hover {
   background: color-mix(currentColor, transparent 80%);
 }
 
@@ -103,6 +111,7 @@ span.delete button {
 }
 
 span.edited-marker {
+  font-family: monospace;
   position: absolute;
   bottom: 0;
   right: 0;

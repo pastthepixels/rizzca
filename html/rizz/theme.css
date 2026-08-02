@@ -4,7 +4,7 @@
 @import url("forms.css");
 
 html {
-  font-family: monospace;
+  /* font-family: monospace; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -82,6 +82,7 @@ div.post-container {
 }
 
 div.post-container textarea {  
+  font-family: monospace;
   resize: vertical;
   background: var(--color-light-1);
   color: var(--color-dark-1);
