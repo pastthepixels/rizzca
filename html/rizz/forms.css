@@ -1,0 +1,62 @@
+/* Label */
+label[for] {
+  font-style: italic;
+  font-size: 10pt;
+  color: var(--color-dark-2);
+  margin-bottom: 4pt;
+}
+
+/* Buttons */
+button, input[type=submit] {
+  padding: 4px 16px;
+  border-radius: 24pt;
+  background-color: unset;
+  border: 2px solid currentColor;
+  color: var(--color-accent-dark);
+  font-family: inherit;
+  cursor: pointer;
+  transition: 0.1s ease border-bottom-width;
+}
+
+button:hover:not(button:active), input:hover {
+  background: var(--color-dark-1);
+  color: var(--color-light-1);
+}
+
+
+/* Input forms */
+input:focus-visible {
+  outline: 2px solid var(--color-light-1);
+  box-shadow: 0 0 0 4px var(--color-dark-1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: start;
+}
+
+form fieldset > label:before {
+  content: "⬐ ";
+}
+
+form fieldset > input {
+  margin-bottom: 15px;
+}
+
+form fieldset > input[type=text] {
+  align-self: stretch;
+}
+
+input[type=text], input[type=password] {
+  border: 1px solid var(--color-dark-3);
+  border-radius: 4px;
+  padding: 4px 8px;
+}

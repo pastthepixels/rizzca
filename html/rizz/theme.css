@@ -1,6 +1,7 @@
 @import url("vars.css");
 @import url("potatoe.css");
 @import url("thread.css");
+@import url("forms.css");
 
 html {
   font-family: monospace;
@@ -68,31 +69,6 @@ div.row > * {
 ul[type="menu"] {
   gap: 24px;
   margin-bottom: 8px;
-}
-
-/* Label */
-label[for] {
-  font-style: italic;
-  font-size: 10pt;
-  color: var(--color-dark-2);
-  margin-bottom: 4pt;
-}
-
-/* Buttons */
-button, input[type=submit] {
-  padding: 4px 16px;
-  border-radius: 24pt;
-  background-color: unset;
-  border: 2px solid currentColor;
-  color: var(--color-accent-dark);
-  font-family: inherit;
-  cursor: pointer;
-  transition: 0.1s ease border-bottom-width;
-}
-
-button:hover:not(button:active), input:hover {
-  background: var(--color-dark-1);
-  color: var(--color-light-1);
 }
 
 /* Post text field */
